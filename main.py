@@ -1,3 +1,11 @@
+"""
+Machine Learning Pipeline for Short-term 
+Rental Price Prediction
+
+author : Moh. Rosidi
+data : August 2021
+"""
+
 import json
 
 import mlflow
@@ -23,6 +31,15 @@ _steps = [
 # This automatically reads in the configuration
 @hydra.main(config_name='config')
 def go(config: DictConfig):
+    """
+    Function to run Mlflow pipeline and  logging using Wandb
+
+    arguments:
+        config: configuration file for ML Training and testing
+    return:
+        None
+    """
+
 
     # Setup the wandb experiment. All runs will be grouped under this name
     os.environ["WANDB_PROJECT"] = config["main"]["project_name"]

@@ -1,9 +1,22 @@
+"""
+Module to conduct data check using pytest
+"""
+
 import pandas as pd
 import numpy as np
 import scipy.stats
 
 
 def test_column_names(data):
+    """
+    Function to check if column names in our dataset same as 
+    our list of expected column names
+
+    argument:
+        data : pandas dataframe
+    return:
+        None
+    """
 
     expected_colums = [
         "id",
@@ -31,6 +44,15 @@ def test_column_names(data):
 
 
 def test_neighborhood_names(data):
+    """
+    Funtion to test if neighbourhood_group column, contain 
+    the expected unique value
+
+    argument:
+        data : pandas dataframe
+    return:
+        None
+    """
 
     known_names = ["Bronx", "Brooklyn", "Manhattan", "Queens", "Staten Island"]
 

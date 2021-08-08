@@ -40,6 +40,15 @@ logger = logging.getLogger()
 
 
 def go(args):
+    """
+    Function to configure random forest training process and logging
+
+    argument:
+        args: command line argument to specify training paramenters and
+            logging
+    return:
+        None
+    """
 
     run = wandb.init(job_type="train_random_forest")
     run.config.update(args)
@@ -154,6 +163,15 @@ def go(args):
 
 
 def plot_feature_importance(pipe, feat_names):
+    """
+    Create feature importance plot
+
+    argument:
+        pipe: scikit learn pipeline object
+        feat_names: list of of feature names
+    return:
+        fig_feat_imp: plot object
+    """
     # We collect the feature importance for all non-nlp features first
     feat_imp = pipe["random_forest"].feature_importances_[: len(feat_names)-1]
     # For the NLP feature we sum across all the TF-IDF dimensions into a global
@@ -170,6 +188,17 @@ def plot_feature_importance(pipe, feat_names):
 
 
 def get_inference_pipeline(rf_config, max_tfidf_features):
+    """
+    Helper function to specify tranformation and training pipeline
+
+    argument:
+        rf_config: random forest configuration
+        max_tfidf_features: maximum number of tfidf feature
+    return:
+        sk_pipe: column transformation and training pipeline  
+        processed_features: list of column names used in inference
+            pipeline 
+    """
     # Let's handle the categorical features first
     # Ordinal categorical are categorical values for which the order is meaningful, for example
     # for room type: 'Entire home/apt' > 'Private room' > 'Shared room'
