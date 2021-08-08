@@ -1,10 +1,99 @@
 # Build an ML Pipeline for Short-Term Rental Prices in NYC
+
+``` Project **Build an ML Pipeline for Short-Term Rental Prices in NYC** Churn of ML DevOps Engineer Nanodegree Udacity```
+
 You are working for a property management company renting rooms and properties for short periods of 
 time on various rental platforms. You need to estimate the typical price for a given property based 
 on the price of similar properties. Your company receives new data in bulk every week. The model needs 
 to be retrained with the same cadence, necessitating an end-to-end pipeline that can be reused.
 
-In this project you will build such a pipeline.
+For this project, we will build ML Pipeline to perform a number of processes< such as: downloading the required datasets, doing basic celaning, checking based on assumptions on data, training, and testing. The pipeline built for this project is very simple and allows it to be upgraded in the future.
+
+![ML Pipeline](images/ml_pipeline.PNG)
+
+## Repository Structure
+
+'''
+.
+├── LICENSE
+├── LICENSE.txt
+├── MLproject
+├── README.md
+├── components
+│   ├── README.md
+│   ├── conda.yml
+│   ├── get_data
+│   │   ├── MLproject
+│   │   ├── conda.yml
+│   │   ├── data
+│   │   │   ├── sample1.csv
+│   │   │   └── sample2.csv
+│   │   └── run.py
+│   ├── setup.py
+│   ├── test_regression_model
+│   │   ├── MLproject
+│   │   ├── conda.yml
+│   │   └── run.py
+│   └── train_val_test_split
+│       ├── MLproject
+│       ├── conda.yml
+│       └── run.py
+├── conda.yml
+├── config.yaml
+├── cookie-mlflow-step
+│   ├── README.md
+│   ├── cookiecutter.json
+│   └── {{cookiecutter.step_name}}
+│       ├── MLproject
+│       ├── conda.yml
+│       └── {{cookiecutter.script_name}}
+├── environment.yml
+|
+|...
+|
+├── main.py
+|
+|...
+|
+└── src
+    ├── basic_cleaning
+    │   ├── MLproject
+    │   ├── artifacts
+    │   │   └── sample.csv:v0
+    │   │       └── sample1.csv
+    │   ├── conda.yml
+    │   └── run.py
+    ├── data_check
+    │   ├── MLproject
+    │   ├── __pycache__
+    │   │   ├── conftest.cpython-39-pytest-6.2.2.pyc
+    │   │   └── test_data.cpython-39-pytest-6.2.2.pyc
+    │   ├── artifacts
+    │   │   ├── clean_sample.csv:v0
+    │   │   │   └── clean_sample.csv
+    │   │   └── clean_sample.csv:v1
+    │   │       └── clean_sample.csv
+    │   ├── conda.yml
+    │   ├── conftest.py
+    │   └── test_data.py
+    ├── eda
+    │   ├── EDA.ipynb
+    │   ├── MLproject
+    │   ├── artifacts
+    │   │   └── sample.csv:v0
+    │   │       └── sample1.csv
+    │   └── conda.yml
+    └── train_random_forest
+        ├── MLproject
+        ├── artifacts
+        │   ├── trainval_data.csv:v0
+        │   │   └── tmp9cq0zk5j
+        │   └── trainval_data.csv:v1
+        │       └── tmpu7lq_jd4
+        ├── conda.yml
+        ├── feature_engineering.py
+        └── run.py
+'''
 
 ## Table of contents
 
