@@ -273,12 +273,12 @@ We can directly use the existing pipeline to do the training process without the
 mlflow run -v [pipeline_version] https://github.com/mohrosidi/nyc_airbnb_dev.git
 ```
 
-`[pipeline_version]` is a release version of the pipeline. For example this repository has currently been released for version `1.0.2`. So we need to input `1.0.2` in place of `[pipeline_version]`.
+`[pipeline_version]` is a release version of the pipeline. For example this repository has currently been released for version `1.0.3`. So we need to input `1.0.3` in place of `[pipeline_version]`.
 
 Suppose we want to change the training random forest parameters can also be done by rewriting the configuration parameters using hydra.
 
 ```bash
-mlflow run -v 1.0.2 \
+mlflow run -v 1.0.3 \
   https://github.com/mohrosidi/nyc_airbnb_dev.git \
   -P steps=train_random_forest \
   -P hydra_options="modeling.random_forest.max_depth=10 modeling.random_forest.n_estimators=100 -m"

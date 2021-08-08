@@ -1,0 +1,15 @@
+artifact_uri: file:///home/rosidi/nyc_airbnb_dev/mlruns/0/14637e4176324fb49d66140adc0a2844/artifacts
+end_time: 1628464572552
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+name: ''
+run_id: 14637e4176324fb49d66140adc0a2844
+run_uuid: 14637e4176324fb49d66140adc0a2844
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1628464549844
+status: 3
+tags: []
+user_id: rosidi
