@@ -1,0 +1,35 @@
+{
+    "os": "Linux-5.11.0-25-generic-x86_64-with-glibc2.33",
+    "python": "3.9.6",
+    "heartbeatAt": "2021-08-07T08:58:08.939956",
+    "startedAt": "2021-08-07T08:58:01.789657",
+    "docker": null,
+    "cpu_count": 2,
+    "cuda": null,
+    "args": [
+        "--input_artifact",
+        "sample.csv:latest",
+        "--output_artifact",
+        "clean_sample.csv",
+        "--output_type",
+        "clean_sample",
+        "--output_description",
+        "Data with outliers and null values removed",
+        "--min_price",
+        "10",
+        "--max_price",
+        "350"
+    ],
+    "state": "running",
+    "program": "/home/rosidi/nd0821-c2-build-model-workflow-starter/src/basic_cleaning/run.py",
+    "codePath": "src/basic_cleaning/run.py",
+    "git": {
+        "remote": "https://github.com/mohrosidi/nd0821-c2-build-model-workflow-starter.git",
+        "commit": "770cea1708b8d6dd0b7b3302fb10628df1604d01"
+    },
+    "email": "moh.rosidi2610@gmail.com",
+    "root": "/home/rosidi/nd0821-c2-build-model-workflow-starter",
+    "host": "rosidi-VirtualBox",
+    "username": "rosidi",
+    "executable": "/home/rosidi/anaconda3/envs/mlflow-2d74a3fe5b739a35fe7fa1f1025c70c15ecfe41c/bin/python"
+}

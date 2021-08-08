@@ -1,0 +1,15 @@
+artifact_uri: file:///home/rosidi/nd0821-c2-build-model-workflow-starter/mlruns/0/a753d99626e04ec4afdf8a6260558389/artifacts
+end_time: 1628383122361
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+name: ''
+run_id: a753d99626e04ec4afdf8a6260558389
+run_uuid: a753d99626e04ec4afdf8a6260558389
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1628383105713
+status: 4
+tags: []
+user_id: rosidi
