@@ -1,0 +1,35 @@
+{
+    "os": "Linux-5.4.72-microsoft-standard-WSL2-x86_64-with-glibc2.31",
+    "python": "3.9.6",
+    "heartbeatAt": "2021-08-08T07:23:42.380566",
+    "startedAt": "2021-08-08T07:23:39.719052",
+    "docker": null,
+    "cpu_count": 4,
+    "cuda": null,
+    "args": [
+        "--input_artifact",
+        "sample.csv:latest",
+        "--output_artifact",
+        "clean_sample.csv",
+        "--output_type",
+        "clean_sample",
+        "--output_description",
+        "Data with outliers and null values removed",
+        "--min_price",
+        "10",
+        "--max_price",
+        "350"
+    ],
+    "state": "running",
+    "program": "/home/rosidi/nyc_airbnb_dev/src/basic_cleaning/run.py",
+    "codePath": "src/basic_cleaning/run.py",
+    "git": {
+        "remote": "https://github.com/mohrosidi/nyc_airbnb_dev.git",
+        "commit": "df71ea7bfee75fb076d1e15e36755e9002a60c29"
+    },
+    "email": "moh.rosidi2610@gmail.com",
+    "root": "/home/rosidi/nyc_airbnb_dev",
+    "host": "DESKTOP-7TUR6CV",
+    "username": "rosidi",
+    "executable": "/home/rosidi/anaconda3/envs/mlflow-2d74a3fe5b739a35fe7fa1f1025c70c15ecfe41c/bin/python"
+}
