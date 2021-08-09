@@ -88,6 +88,18 @@ ipython_config.py
 /home/rosidi/nyc_airbnb_dev/mlruns/
 /home/rosidi/nyc_airbnb_dev/outputs/
 /home/rosidi/nyc_airbnb_dev/multiruns/
+/home/rosidi/nyc_airbnb_dev/src/basic_cleaning/artifacts/
+/home/rosidi/nyc_airbnb_dev/src/basic_cleaning/wandb/
+/home/rosidi/nyc_airbnb_dev/src/data_check/artifacts/
+/home/rosidi/nyc_airbnb_dev/src/data_check/wandb/
+/home/rosidi/nyc_airbnb_dev/src/data_check/mlruns/
+/home/rosidi/nyc_airbnb_dev/src/data_check/__pycache__/
+/home/rosidi/nyc_airbnb_dev/src/data_check/.pytest_cache/
+/home/rosidi/nyc_airbnb_dev/src/eda/artifacts/
+/home/rosidi/nyc_airbnb_dev/src/eda/wandb/
+/home/rosidi/nyc_airbnb_dev/src/train_random_forest/artifacts/
+/home/rosidi/nyc_airbnb_dev/src/train_random_forest/wandb/
+
 
 
 # pipenv
