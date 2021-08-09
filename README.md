@@ -27,6 +27,7 @@ For this project, we will build ML Pipeline to perform a number of processes< su
   * [Running the entire pipeline or just a selection of steps](#Running-the-entire-pipeline-or-just-a-selection-of-steps)
   * [Run existing pipeline](#run-existing-pipeline)
 - [In case of errors](#in-case-of-errors)
+- [Deploy your model](#deploy-your-model)
 - [Development plans](#development-plans)
 
 ## Repository structure
@@ -308,6 +309,63 @@ If you are ok with that list, execute this command to clean them up:
 ```
 
 This will iterate over all the environments created by `mlflow` and remove them.
+
+## Deploy your model
+Suppose we have new data and want to use our model to make predictions on the speed data. There are three ways to do this that will be described in this section.
+
+Let's consider batch processing first. MLflow allows you to use any artifact exported with MLflow for batch processing.
+
+### Offiline inference
+
+For example, let's fetch an inference artifact from one of the previous exercises using wandb:
+
+```bash
+wandb artifact get nyc_airbnb/random_forest_export:prod --root model
+```
+The `--root` option sets the directory where wandb will save the artifact. So after this command we have our MLflow model in the model directory. We can now use it for batch processing by using mlflow models predict:
+
+```bash
+mlflow models predict -t json -i model/input_example.json -m model
+```
+where input.csv is a file containing a batch of requests, -t indicates the format of the file (csv in this case), and -m model specifies the directory containing the model.
+
+You can also use your own data in this case.
+
+### Online inference
+
+We can serve a model for online inference by using` mlflow models serve` (we assume we already have our inference artifact in the `model` directory):
+
+```bash
+mlflow models serve -m model &
+```
+
+Mlflow will create a REST API for us that we can interrogate by sending requests to the endpoint (which by default is `http://localhost:5000/invocations`). For example, we can do this from python like this:
+
+```python
+import requests
+import json
+
+with open("data_sample.json") as fp:
+    data = json.load(fp)
+
+results = requests.post("http://localhost:5000/invocations", json=data)
+
+print(results.json())
+````
+
+### Docker deployment
+
+You can also use docker to build an image and then deploy to a Cloud provider (AWS, GCP, Azure...). Expose port 5000 of that machine to the world, and you will be able to use your model from whenever as a simple API call.
+
+1. Create the docker image:
+```bash
+mlflow models build-docker -m model -n "nyc_airbnb_model"
+```
+This will take a few minutes (of course, you need docker installed)
+
+2. Follow the procedure for your Cloud provider of choice to deploy a Docker image
+3. Open port 5000 on the machine hosting the image
+4. Use requests to interrogate that machine, by using the snippet we used earlier and substituting `http://localhost:5000/invocations` with `[url to the deployed machine]:5000/invocations`
 
 ## Development plans
 
