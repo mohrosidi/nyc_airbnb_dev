@@ -1,5 +1,5 @@
 """
-Machine Learning Pipeline for Short-term 
+Machine Learning Pipeline for Short-term
 Rental Price Prediction
 
 author : Moh. Rosidi
@@ -7,11 +7,10 @@ data : August 2021
 """
 
 import json
+import os
+import tempfile
 
 import mlflow
-import tempfile
-import os
-import wandb
 import hydra
 from omegaconf import DictConfig
 
@@ -21,16 +20,12 @@ _steps = [
     "data_check",
     "data_split",
     "train_random_forest",
-    # NOTE: We do not include this in the steps so it is not run by mistake.
-    # You first need to promote a model export to "prod" before you can run this,
-    # then you need to run this step explicitly
     "test_regression_model"
 ]
 
 
-# This automatically reads in the configuration
 @hydra.main(config_name='config')
-def go(config: DictConfig):
+def run_mlflow(config: DictConfig):
     """
     Function to run Mlflow pipeline and  logging using Wandb
 
@@ -53,7 +48,6 @@ def go(config: DictConfig):
     with tempfile.TemporaryDirectory() as tmp_dir:
 
         if "download" in active_steps:
-            # Download file and load in W&B
             _ = mlflow.run(
                 f"{config['main']['components_repository']}/get_data",
                 "main",
@@ -109,17 +103,12 @@ def go(config: DictConfig):
 
         if "train_random_forest" in active_steps:
 
-            # NOTE: we need to serialize the random forest configuration into
-            # JSON
             rf_config = os.path.abspath("rf_config.json")
-            with open(rf_config, "w+") as fp:
+            with open(rf_config, "w+") as file:
                 json.dump(
                     dict(
                         config["modeling"]["random_forest"].items()),
-                    fp)  # DO NOT TOUCH
-
-            # NOTE: use the rf_config we just created as the rf_config parameter for the train_random_forest
-            # step
+                    file)
 
             _ = mlflow.run(
                 os.path.join(
@@ -149,4 +138,4 @@ def go(config: DictConfig):
 
 
 if __name__ == "__main__":
-    go()
+    run_mlflow()
